@@ -1,0 +1,3 @@
+# efk-centos-22a
+1. created namespace...
+
