@@ -1,0 +1,26 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-logging
+  namespace: NAMESPCE
+  labels:
+    k8s-app: elasticsearch-NAMESPCE
+    kubernetes.io/cluster-service: "true"
+    kubernetes.io/name: "Elasticsearch"
+spec:
+  clusterIP: None
+  ports:
+    - name: db
+      port: 9200
+      protocol: TCP
+      targetPort: 9200
+    - name: transport
+      port: 9300
+      protocol: TCP
+      targetPort: 9300
+  publishNotReadyAddresses: true
+  selector:
+    k8s-app: elasticsearch-NAMESPCE
+  sessionAffinity: None
+  type: ClusterIP
